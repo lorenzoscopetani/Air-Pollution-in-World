@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Air Pollution in World</title>
+		<link rel="icon" href="./img/favicon.png" type="image/png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+			integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Air Pollution in World</h1>
+				<p>Search a City</p>
+				<div class="search-bar">
+					<input type="text" id="input-city" />
+					<button id="search-btn"><i class="fas fa-search"></i></button>
+				</div>
+				<button id="geolocation-btn">
+					<i class="fas fa-map-marker-alt"></i>
+				</button>
+			</header>
+			<div class="error-box invisible">
+				<p>city/station not found</p>
+				<button><i class="fas fa-times"></i></button>
+			</div>
+			<div class="message-box invisible">
+				<p>this city is already on your list</p>
+				<button><i class="fas fa-times"></i></button>
+			</div>
+			<div class="output-box invisible">
+				<div class="output-header">
+					<p id="city"></p>
+					<i id="plus-btn" class="fas fa-plus"></i>
+				</div>
+				<div class="output-aqi">
+					<div id="aqi-value"></div>
+					<div class="aqi-level-box">
+						<p>Air Quality Index</p>
+						<p id="aqi-level">Moderate</p>
+					</div>
+				</div>
+				<div class="more-info">
+					<ul>
+						<li>
+							<strong>PM25</strong>
+							<p id="pm25"></p>
+						</li>
+						<li>
+							<strong>PM10</strong>
+							<p id="pm10"></p>
+						</li>
+						<li>
+							<strong>O3</strong>
+							<p id="o3"></p>
+						</li>
+						<li>
+							<strong>NO2</strong>
+							<p id="no2"></p>
+						</li>
+						<li>
+							<strong>SO2</strong>
+							<p id="so2"></p>
+						</li>
+						<li>
+							<strong>CO</strong>
+							<p id="co"></p>
+						</li>
+						<li>
+							<strong>Temperature</strong>
+							<p id="t"></p>
+						</li>
+						<li>
+							<strong>Pressure</strong>
+							<p id="p"></p>
+						</li>
+						<li>
+							<strong>Humidity</strong>
+							<p id="h"></p>
+						</li>
+						<li>
+							<strong>Wind</strong>
+							<p id="w"></p>
+						</li>
+					</ul>
+				</div>
+				<hr />
+				<button id="close-btn">CLOSE</button>
+			</div>
+			<div id="favorite-city-list">
+				<h2>Your City</h2>
+				<p>add your favorite cities to make it easy to know their AQI</p>
+				<ul></ul>
+			</div>
+		</div>
+	</body>
+</html>

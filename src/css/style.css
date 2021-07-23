@@ -1,0 +1,268 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Caveat', cursive;
+
+	background: #808080; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#3fada8,
+		#808080
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#3fada8,
+		#808080
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+input,
+button {
+	outline: none;
+	border: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+.container {
+	width: 100%;
+	padding-bottom: 70px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+header {
+	width: 100%;
+	text-align: center;
+}
+
+header > h1 {
+	font-size: 55px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+header > p {
+	margin-bottom: 20px;
+	font-size: 25px;
+}
+
+.search-bar {
+	width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.search-bar > input {
+	height: 35px;
+	min-width: 250px;
+	border-radius: 5px 0px 0px 5px;
+	padding: 5px;
+	font-size: 20px;
+	background-color: #fff;
+}
+
+.search-bar > button {
+	height: 35px;
+	min-width: 35px;
+	border-radius: 0px 5px 5px 0px;
+	background-color: #fff;
+}
+
+header > button {
+	width: 60px;
+	height: 40px;
+	border-radius: 5px;
+	font-size: 20px;
+	background-color: rgb(171, 85, 85);
+}
+
+.error-box {
+	width: 300px;
+	margin-top: 60px;
+	background-color: #f39898;
+	border: 2px solid #cb1919;
+	border-radius: 5px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.error-box > p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+}
+
+.error-box > button {
+	background-color: #f39898;
+}
+
+.fa-times {
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.message-box {
+	width: 300px;
+	margin-top: 60px;
+	margin-bottom: -50px;
+	padding: 10px;
+	background-color: hsl(57, 72%, 67%);
+	border: 2px solid hsl(54, 92%, 42%);
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.message-box > p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+}
+
+.message-box > button {
+	background-color: hsl(57, 72%, 67%);
+}
+
+.output-box {
+	background-color: #fff;
+	width: 320px;
+	padding: 15px;
+	margin-top: 100px;
+	flex-direction: column;
+	border-radius: 10px;
+}
+
+.visible {
+	display: flex;
+}
+
+.invisible {
+	display: none;
+}
+
+.output-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+
+.output-header > .fa-plus {
+	cursor: pointer;
+	font-size: 19px;
+}
+
+.output-header > .fa-plus:hover {
+	color: #847a7a;
+}
+
+#city {
+	font-size: 23px;
+}
+
+.output-aqi {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#aqi-value {
+	width: 70px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	font-size: 40px;
+	margin-right: 50px;
+}
+
+.aqi-level-box {
+	margin-right: 20px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+#aqi-level {
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.more-info {
+	margin-top: 30px;
+	margin-bottom: 10px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.more-info > ul {
+	list-style: none;
+}
+
+.more-info > ul > li {
+	display: flex;
+	padding: 0.25rem;
+}
+
+.more-info > ul > li > p {
+	margin-left: 10px;
+}
+
+.output-box > button {
+	margin-top: 15px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	background-color: #fff;
+	color: red;
+}
+
+#favorite-city-list {
+	width: 320px;
+	margin-top: 100px;
+	text-align: center;
+}
+
+#favorite-city-list > h2 {
+	font-size: 35px;
+}
+
+#favorite-city-list > p {
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 35px;
+}
+
+#favorite-city-list > ul {
+	list-style: none;
+}
+
+#favorite-city-list > ul > li {
+	background-color: #fff;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+#favorite-city-list > ul > li > p {
+	cursor: pointer;
+}
+
+#favorite-city-list > ul > li > p:hover {
+	color: #219dc0;
+}
+
+#favorite-city-list > ul > li > button {
+	background-color: #fff;
+}
