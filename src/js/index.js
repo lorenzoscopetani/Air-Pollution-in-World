@@ -36,13 +36,18 @@ document
 	});
 
 async function fetchData(city) {
-	let res = await axios.get(
-		`https://api.waqi.info/feed/${city}/?token=${API_SECRET}`
-	);
-	let data = await res.data.data;
-	if (res.data.status == 'ok') {
-		insertData(data);
-	} else {
+	try {
+		let res = await axios.get(
+			`https://api.waqi.info/feed/${city}/?token=${API_SECRET}`
+		);
+		let data = await res.data.data;
+		console.log(data);
+		if (data == 'Unknown station') {
+			showError();
+		} else {
+			insertData(data);
+		}
+	} catch {
 		showError();
 	}
 }
@@ -50,11 +55,19 @@ async function fetchData(city) {
 function getPosition() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(async (position) => {
-			let res = await axios.get(
-				`https://api.waqi.info/feed/geo:${position.coords.latitude};${position.coords.longitude}/?token=${API_SECRET}`
-			);
-			let data = await res.data.data;
-			insertData(data);
+			try {
+				let res = await axios.get(
+					`https://api.waqi.info/feed/geo:${position.coords.latitude};${position.coords.longitude}/?token=${API_SECRET}`
+				);
+				let data = await res.data.data;
+				if (data == 'Unknown station') {
+					showError();
+				} else {
+					insertData(data);
+				}
+			} catch {
+				showError();
+			}
 		});
 	}
 }
@@ -65,7 +78,6 @@ async function searchCity() {
 	} else {
 		showError();
 	}
-
 	inputCity.value = '';
 }
 
@@ -128,22 +140,23 @@ function insertData(data) {
 	}
 
 	document.querySelector('#pm25').innerText =
-		_.get(data, 'iaqi.pm25.v', '-') + 'µg/m³';
+		_.get(data, 'iaqi.pm25.v', '-') + ' µg/m³';
 	document.querySelector('#pm10').innerText =
-		_.get(data, 'iaqi.pm10.v', '-') + 'µg/m³';
+		_.get(data, 'iaqi.pm10.v', '-') + ' µg/m³';
 	document.querySelector('#o3').innerText =
-		_.get(data, 'iaqi.o3.v', '-') + 'µg/m³';
+		_.get(data, 'iaqi.o3.v', '-') + ' µg/m³';
 	document.querySelector('#no2').innerText =
-		_.get(data, 'iaqi.no2.v', '-') + 'µg/m³';
+		_.get(data, 'iaqi.no2.v', '-') + ' µg/m³';
 	document.querySelector('#so2').innerText =
-		_.get(data, 'iaqi.so2.v', '-') + 'µg/m³';
+		_.get(data, 'iaqi.so2.v', '-') + ' µg/m³';
 	document.querySelector('#co').innerText =
-		_.get(data, 'iaqi.co.v', '-') + 'µg/m³';
-	document.querySelector('#t').innerText = _.get(data, 'iaqi.t.v', '-') + '°C';
+		_.get(data, 'iaqi.co.v', '-') + ' µg/m³';
+	document.querySelector('#t').innerText = _.get(data, 'iaqi.t.v', '-') + ' °C';
 	document.querySelector('#p').innerText =
-		_.get(data, 'iaqi.p.v', '-') + 'g/cm²';
-	document.querySelector('#h').innerText = _.get(data, 'iaqi.h.v', '-') + '%';
-	document.querySelector('#w').innerText = _.get(data, 'iaqi.w.v', '-') + 'm/s';
+		_.get(data, 'iaqi.p.v', '-') + ' g/cm²';
+	document.querySelector('#h').innerText = _.get(data, 'iaqi.h.v', '-') + ' %';
+	document.querySelector('#w').innerText =
+		_.get(data, 'iaqi.w.v', '-') + ' m/s';
 }
 
 function closeOutputBox(e) {
